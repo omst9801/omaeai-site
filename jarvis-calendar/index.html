@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OMAE JARVIS Calendar</title>
+<meta name="description" content="OMAE JARVIS Calendar is a private desktop application that connects the owner's Google Calendar to JARVIS for reading the schedule and owner-approved event management.">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<header>
+  <a class="brand" href="/">OMAE AI</a>
+  <nav><a href="/jarvis-calendar/">OMAE JARVIS Calendar</a><a href="/jarvis-calendar/privacy/">Privacy Policy</a></nav>
+</header>
+<main>
+  <h1>OMAE JARVIS Calendar</h1>
+  <p class="lead">A private macOS desktop application that connects the owner's Google Calendar to JARVIS, the owner's personal assistant.</p>
+
+  <div class="card">
+    <strong>Private application.</strong> OMAE JARVIS Calendar is used only by its owner, with the owner's own Google account. It has no public sign-up and is not offered to other users.
+  </div>
+
+  <h2>What it does</h2>
+  <ul>
+    <li><strong>Reads the schedule.</strong> It answers questions such as "What's on my calendar tomorrow?" or "Which events require my attention?".</li>
+    <li><strong>Checks availability.</strong> It answers questions such as "Am I available Friday afternoon?" and finds free time.</li>
+    <li><strong>Manages events with the owner's approval.</strong> It can prepare to create, move, rename or cancel an event, but nothing changes until the owner approves that exact change in a native macOS dialog on their Mac. Higher-risk changes need a typed confirmation code as well. These include changes to recurring events, to events with other attendees, and to events that start within the next 24 hours.</li>
+  </ul>
+
+  <h2>How it works</h2>
+  <ul>
+    <li>The owner connects their Google account once with Google's standard sign-in for desktop apps (OAuth 2.0 with PKCE and a loopback redirect on the Mac). The owner's Google password is never seen or stored.</li>
+    <li>The sign-in credentials are kept in the macOS Keychain on the owner's Mac.</li>
+    <li>Calendar requests are interpreted by code that runs on the Mac. No AI model receives Google Calendar data.</li>
+    <li>Changes are checked on the Mac before anything is sent to Google: each one gets a single-use approval that expires, and there is an emergency STOP ALL switch.</li>
+    <li>The owner can disconnect at any time. Disconnecting revokes access at Google and deletes the stored credentials.</li>
+  </ul>
+
+  <h2>Google permissions requested</h2>
+  <table>
+    <tr><th>Permission</th><th>Why</th></tr>
+    <tr><td><code>calendar.calendarlist.readonly</code></td><td>To see which calendars the owner has, so JARVIS can tell personal, business and shared calendars apart.</td></tr>
+    <tr><td><code>calendar.events</code></td><td>To read events, and to create, change or delete an event only when the owner approves that specific change.</td></tr>
+  </table>
+  <p>It requests no other Google data: no Gmail, Drive, Contacts or profile access.</p>
+
+  <p>Read the <a href="/jarvis-calendar/privacy/">Privacy Policy</a> for full details on data handling.</p>
+</main>
+<footer>© 2026 OMAE AI · <a href="/">Home</a> · <a href="/jarvis-calendar/privacy/">Privacy Policy</a> · <a href="mailto:privacy@omaeai.com">privacy@omaeai.com</a></footer>
+</body>
+</html>
