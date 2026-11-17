@@ -119,6 +119,22 @@
 @media(max-width:380px){.price-switch{width:100%}.price-switch button{font-size:12px;padding:11px;flex:1}.plan-price{font-size:43px}}
 @media(prefers-reduced-motion:reduce){.price-switch button,.plan-action{transition:none}}
 </style>
+<style>
+/* Transparent, always-visible monthly vs annual pricing — 2026-11-17 */
+.price-guide{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:24px 0 22px;padding:16px 19px;border:1px solid var(--line);background:#112638;border-radius:13px;color:#c8d8e1;font-size:13px;line-height:1.6}
+.price-guide strong{color:#fff}.guide-savings{color:var(--mint);font-size:12px;font-weight:700;text-align:right;white-space:nowrap}
+.price-comparison{display:grid;grid-template-columns:1fr;gap:10px;margin:0 0 17px}
+.billing-option{padding:13px 15px;border:1px solid #4c677359;border-radius:11px;background:rgba(3,17,29,.5)}
+.billing-option.annual{border-color:rgba(114,238,212,.56);background:rgba(114,238,212,.075)}
+.billing-head{color:#e6edf3;font-size:12px;letter-spacing:.005em;font-weight:750;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:5px;margin-bottom:4px}
+.billing-option.annual .billing-head{color:#bafbed}
+.billing-save{font-size:10px;line-height:1.25;border-radius:5px;background:#72eed428;color:var(--mint);padding:4px 6px;white-space:nowrap}
+.billing-value{font-size:32px;font-weight:800;letter-spacing:-.05em;line-height:1.2;color:#fff;font-variant-numeric:tabular-nums}
+.billing-option.annual .billing-value{color:var(--mint)}
+.billing-value small{font-size:13px;font-weight:500;letter-spacing:0;color:#b3c5d2;margin-left:5px}
+.billing-caption{font-size:11.5px;color:#a8bac7;line-height:1.5;margin:6px 0 0}
+@media(max-width:800px){.price-guide{flex-direction:column;align-items:flex-start;gap:5px}.guide-savings{text-align:left}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -208,20 +224,16 @@
 <p class="pricing-sub">Choose the Kate that fits your business. Every plan is designed to give your callers a warm, natural first hello—without the old phone menus.</p></div>
 <div class="pricing-launch">Founding customer offer · Launch preview</div>
 </div>
-<div class="price-switch-wrap">
-<span class="price-switch-copy">Preview the planned launch rates. Save with annual billing; no payment is collected on this page.</span>
-<div class="price-switch" role="group" aria-label="Compare monthly and annual billing">
-<button type="button" data-pricing-cycle="monthly" aria-pressed="false">Pay monthly</button>
-<button type="button" data-pricing-cycle="annual" aria-pressed="true">Pay annually · Save up to 8%</button>
-</div>
-</div>
+<div class="price-guide"><span><strong>Compare monthly and annual pricing side by side.</strong> Annual rates show the monthly equivalent and require payment for 12 months upfront.</span><span class="guide-savings">Founding-customer launch pricing · Preview</span></div>
 <div class="pricing-grid">
 <article class="price-card" aria-label="Kate Starter">
 <span class="pricing-feature-tag" style="visibility:hidden" aria-hidden="true">PLAN</span>
 <h3 class="plan-name">Kate Starter</h3>
 <p class="plan-audience">For independent professionals & small businesses</p>
-<p class="plan-price-line"><span class="plan-price" data-monthly="85" data-annual="79">$79</span><span class="plan-unit">/ month</span></p>
-<p class="plan-billed" data-monthly="Billed monthly · $85/month" data-annual="Billed $948 upfront for 12 months">Billed $948 upfront for 12 months</p>
+<div class="price-comparison" aria-label="Kate Starter billing choices">
+<div class="billing-option monthly"><div class="billing-head">Pay monthly</div><div class="billing-value">$85<small>/month</small></div><p class="billing-caption">Billed $85 each month</p></div>
+<div class="billing-option annual"><div class="billing-head">Pay annually <span class="billing-save">Save $120/year</span></div><div class="billing-value">$75<small>/month</small></div><p class="billing-caption">Equivalent monthly price · $900 charged once per year</p></div>
+</div>
 <p class="plan-allowance"><strong>150</strong> AI call minutes / month</p>
 <ul><li>Kate's natural inbound conversations</li><li>One dedicated number or existing-number setup</li><li>Private Kate Inbox & call summaries</li><li>Business greeting, hours and FAQs</li><li>Basic call routing & callback requests</li></ul>
 <a class="plan-action" href="#hire-kate" aria-label="Preview Kate Starter phone setup">Preview Kate setup ↗</a>
@@ -230,8 +242,10 @@
 <span class="pricing-feature-tag">MOST POPULAR</span>
 <h3 class="plan-name">Kate Business</h3>
 <p class="plan-audience">For growing teams with a busy front desk</p>
-<p class="plan-price-line"><span class="plan-price" data-monthly="195" data-annual="179">$179</span><span class="plan-unit">/ month</span></p>
-<p class="plan-billed" data-monthly="Billed monthly · $195/month" data-annual="Billed $2,148 upfront for 12 months">Billed $2,148 upfront for 12 months</p>
+<div class="price-comparison" aria-label="Kate Business billing choices">
+<div class="billing-option monthly"><div class="billing-head">Pay monthly</div><div class="billing-value">$195<small>/month</small></div><p class="billing-caption">Billed $195 each month</p></div>
+<div class="billing-option annual"><div class="billing-head">Pay annually <span class="billing-save">Save $192/year</span></div><div class="billing-value">$179<small>/month</small></div><p class="billing-caption">Equivalent monthly price · $2,148 charged once per year</p></div>
+</div>
 <p class="plan-allowance"><strong>500</strong> AI call minutes / month</p>
 <ul><li>Everything in Starter</li><li>Calendar integration (planned)</li><li>One supported CRM connection (planned)</li><li>Advanced human handoff rules</li><li>Up to 3 dashboard users (planned)</li></ul>
 <a class="plan-action" href="#hire-kate" aria-label="Preview Kate Business phone setup">Preview Kate setup ↗</a>
@@ -240,8 +254,10 @@
 <span class="pricing-feature-tag" style="visibility:hidden" aria-hidden="true">PLAN</span>
 <h3 class="plan-name">Kate Pro</h3>
 <p class="plan-audience">For higher-volume businesses & multi-person teams</p>
-<p class="plan-price-line"><span class="plan-price" data-monthly="379" data-annual="349">$349</span><span class="plan-unit">/ month</span></p>
-<p class="plan-billed" data-monthly="Billed monthly · $379/month" data-annual="Billed $4,188 upfront for 12 months">Billed $4,188 upfront for 12 months</p>
+<div class="price-comparison" aria-label="Kate Pro billing choices">
+<div class="billing-option monthly"><div class="billing-head">Pay monthly</div><div class="billing-value">$379<small>/month</small></div><p class="billing-caption">Billed $379 each month</p></div>
+<div class="billing-option annual"><div class="billing-head">Pay annually <span class="billing-save">Save $360/year</span></div><div class="billing-value">$349<small>/month</small></div><p class="billing-caption">Equivalent monthly price · $4,188 charged once per year</p></div>
+</div>
 <p class="plan-allowance"><strong>1,000</strong> AI call minutes / month</p>
 <ul><li>Everything in Business</li><li>Up to 2 CRM connections (planned)</li><li>Detailed call reports & analytics</li><li>Up to 10 dashboard users (planned)</li><li>Priority assistance (planned)</li></ul>
 <a class="plan-action" href="#hire-kate" aria-label="Preview Kate Pro phone setup">Preview Kate setup ↗</a>
@@ -406,22 +422,7 @@
   });
 })();
 </script>
-<script>
-(() => {
-  "use strict";
-  const buttons = document.querySelectorAll('[data-pricing-cycle]');
-  const prices = document.querySelectorAll('.plan-price[data-monthly][data-annual]');
-  const billed = document.querySelectorAll('.plan-billed[data-monthly][data-annual]');
-  buttons.forEach(button => button.addEventListener('click', () => {
-    const cycle = button.getAttribute('data-pricing-cycle');
-    if (cycle !== 'monthly' && cycle !== 'annual') return;
-    buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
-    prices.forEach(el => {el.textContent = '
-</html> + el.getAttribute('data-' + cycle);});
-    billed.forEach(el => {el.textContent = el.getAttribute('data-' + cycle);});
-  }));
-})();
-</script>
+
 
 </body>
 </html>
