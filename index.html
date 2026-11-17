@@ -135,6 +135,23 @@
 .billing-caption{font-size:11.5px;color:#a8bac7;line-height:1.5;margin:6px 0 0}
 @media(max-width:800px){.price-guide{flex-direction:column;align-items:flex-start;gap:5px}.guide-savings{text-align:left}}
 </style>
+<style>
+/* Compact website language switch and international Hire Kate preview. */
+.site-header{gap:15px}.nav-links{gap:22px}.site-language-switch{display:flex;align-items:center;gap:8px;margin-left:auto;white-space:nowrap}
+.site-language-switch label{font-size:11px;color:#bbd1d5;font-weight:650}
+.site-language-switch select{padding:8px 10px;background:#122a39;border:1px solid #83b8b080;border-radius:8px;color:#f2fbfc;font:inherit;font-size:12px;cursor:pointer;max-width:122px}
+.site-language-switch select:focus-visible{outline:2px solid var(--mint);outline-offset:2px}
+.intl-country-row{display:grid;grid-template-columns:1fr 1.2fr;gap:18px;margin:0 0 27px;padding:19px;border-radius:12px;border:1px solid #a9c6ca3a;background:#102c3970}
+.intl-country-row .field-row select{max-width:100%;width:100%}
+.intl-country-context{display:flex;flex-direction:column;justify-content:center;gap:7px}
+.intl-country-context strong{font-size:14px;color:#e4fff5}.intl-country-context p{font-size:12px;line-height:1.65;color:#b6cbd4;margin:0}
+.intl-country-notice{font-size:12px;line-height:1.65;color:#a9c5ce;margin:0 0 20px}
+.intl-country-badge{display:inline-block;padding:4px 8px;border-radius:20px;background:#89e6ca14;border:1px solid #89e6ca44;color:#b8f4dd;font-size:10px;font-weight:700}
+.field-row[hidden]{display:none!important}
+@media(max-width:1040px){.nav-links{gap:12px;font-size:11px}.site-language-switch label{display:none}}
+@media(max-width:760px){.site-header{gap:8px}.site-language-switch{margin-left:auto}.site-language-switch select{font-size:11px;padding:8px 6px;max-width:110px}.intl-country-row{grid-template-columns:1fr;gap:11px;padding:14px}}
+@media(max-width:390px){.brand{font-size:18px}.nav-cta{padding:8px 8px}.site-language-switch select{max-width:93px}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -145,6 +162,7 @@
 <span>OMAE<span class="brand-light">AI</span></span>
 </a>
 <nav aria-label="Primary" class="nav-links"><a href="#meet-kate">Meet Kate</a><a href="#hear-kate">Hear Kate</a><a href="#capabilities">What Kate can do</a><a href="#pricing">Pricing</a><a href="#hire-kate">Hire Kate</a></nav>
+<div class="site-language-switch"><label for="site-language-choice">Website language</label><select id="site-language-choice" aria-label="Website language"><option data-keep-language="true" value="en">English</option><option data-keep-language="true" value="es">Español</option><option data-keep-language="true" value="fr">Français</option></select></div>
 <a class="nav-cta" href="#hire-kate">Hire Kate ↗</a>
 </header>
 <main id="main">
@@ -279,6 +297,24 @@
 </div>
 <div class="onboard-panel">
 <div class="onboard-topline"><span>STEP 01 <span aria-hidden="true">/</span> CONNECT YOUR PHONE</span><span class="onboard-preview-pill">INTERACTIVE CONCEPT</span></div>
+<div class="intl-country-row">
+<div class="field-row"><label for="service-country">Country or region</label><select id="service-country" aria-describedby="service-country-hint">
+<option value="US" data-dial="+1">United States (+1)</option>
+<option value="CA" data-dial="+1">Canada (+1)</option>
+<option value="FR" data-dial="+33">France (+33)</option>
+<option value="GB" data-dial="+44">United Kingdom (+44)</option>
+<option value="ES" data-dial="+34">Spain (+34)</option>
+<option value="DE" data-dial="+49">Germany (+49)</option>
+<option value="AU" data-dial="+61">Australia (+61)</option>
+<option value="KE" data-dial="+254">Kenya (+254)</option>
+<option value="IN" data-dial="+91">India (+91)</option>
+<option value="PT" data-dial="+351">Portugal (+351)</option>
+<option value="NG" data-dial="+234">Nigeria (+234)</option>
+<option value="ZA" data-dial="+27">South Africa (+27)</option>
+<option value="OTHER" data-dial="">Other country / request review</option>
+</select><small class="field-hint" id="service-country-hint">Choose where your business receives calls. This preview does not verify service availability.</small></div>
+<div class="intl-country-context"><span class="intl-country-badge">International availability varies</span><strong id="service-dial-code">International dialing code +1</strong><p id="service-country-context">The selected country determines the dialing code and the setup information shown below. Numbers, SIP connections, forwarding and porting must be checked with local providers before activation.</p></div>
+</div>
 <div aria-label="Choose how your business will connect its phone number" class="onboard-options" role="group">
 <button aria-controls="new-number-panel" aria-pressed="false" class="onboard-option" data-onboard="new" id="option-new" type="button">
 <span aria-hidden="true" class="onboard-option-icon">＋</span><span class="onboard-option-content"><strong>Get a new business number</strong><small>Starting fresh? Choose a local or toll-free number for Kate.</small></span><span aria-hidden="true" class="onboard-option-arrow">↗</span>
@@ -291,7 +327,7 @@
 <div class="onboard-flow-head"><div><span class="flow-kicker">NEW NUMBER SETUP</span><h3>Let's find Kate a business line.</h3><p>These preferences help us prepare a number search when live onboarding opens.</p></div><span class="onboard-step-tag">STEP 02 / PREFERENCES</span></div>
 <form class="onboard-form" id="new-number-form" novalidate="">
 <fieldset aria-label="Number type" class="number-kind"><legend>What kind of number would you like?</legend><label class="kind-option"><input checked="" name="number-kind" type="radio" value="local"/> <span>Local number</span></label><label class="kind-option"><input name="number-kind" type="radio" value="tollfree"/> <span>Toll-free number</span></label></fieldset>
-<div class="field-row"><label for="area-code">Preferred area code <small>(optional)</small></label><input aria-describedby="area-code-hint" autocomplete="off" id="area-code" inputmode="numeric" maxlength="3" pattern="[0-9]{3}" placeholder="e.g. 612"/><small class="field-hint" id="area-code-hint">Area-code preferences are not guaranteed. Availability will depend on the phone provider.</small></div>
+<div class="field-row" id="area-code-row"><label for="area-code">Preferred area code <small>(optional)</small></label><input aria-describedby="area-code-hint" autocomplete="off" id="area-code" inputmode="numeric" maxlength="3" pattern="[0-9]{3}" placeholder="e.g. 612"/><small class="field-hint" id="area-code-hint">Area-code preferences are not guaranteed. Availability will depend on the phone provider.</small></div>
 <button class="button button-primary setup-button" type="submit">Preview my setup <span aria-hidden="true">↗</span></button>
 </form>
 </div>
@@ -299,7 +335,7 @@
 <div class="onboard-flow-head"><div><span class="flow-kicker">EXISTING NUMBER SETUP</span><h3>Keep the number people already call.</h3><p>We'll guide you through an authorized connection with your phone provider.</p></div><span class="onboard-step-tag">STEP 02 / CONNECTION</span></div>
 <form class="onboard-form" id="existing-number-form">
 <div class="onboard-fields"><div class="field-row"><label for="company-phone">Business phone number</label><input aria-describedby="existing-number-hint" autocomplete="off" id="company-phone" inputmode="tel" placeholder="(612) 555-0100" type="tel"/><small class="field-hint" id="existing-number-hint">Enter a sample number for this preview. No verification or routing changes will occur.</small></div>
-<div class="field-row"><label for="phone-provider">Current phone provider</label><select id="phone-provider" required=""><option value="">Select your provider</option><option>Vonage</option><option>RingCentral</option><option>Nextiva</option><option>Google Voice</option><option>Microsoft Teams Phone</option><option>Other / not sure</option></select><small class="field-hint">The available setup methods vary by provider.</small></div></div>
+<div class="field-row"><label for="phone-provider">Current phone provider</label><select id="phone-provider" required=""><option value="">Select your provider</option><option>Vonage</option><option>RingCentral</option><option>Nextiva</option><option>Google Voice</option><option>Microsoft Teams Phone</option><option>Other / not sure</option><option>Other international provider</option></select><small class="field-hint">The available setup methods vary by provider.</small></div></div>
 <fieldset class="connection-method"><legend>How would you like Kate to answer?</legend><label><input checked="" name="connection-method" type="radio" value="forward"/> Forward calls to Kate <small>Typically the easiest first step</small></label><label><input name="connection-method" type="radio" value="integrate"/> Connect my phone system <small>For compatible SIP or PBX systems</small></label><label><input name="connection-method" type="radio" value="port"/> Transfer (port) my number <small>Move an eligible number to a supported provider, subject to approval</small></label></fieldset>
 <p class="port-help" id="port-help" hidden><strong>Porting is a separate process.</strong> We would verify ownership and provider eligibility, obtain authorization, explain timing and possible service impacts, and confirm the number remains active with your current provider until the transfer is scheduled. This preview cannot submit a port request.</p>
 <button class="button button-primary setup-button" type="submit">Preview connection steps <span aria-hidden="true">↗</span></button>
@@ -423,6 +459,113 @@
 })();
 </script>
 
+
+<script>
+/* Internationalized phone-number setup is deliberately a local preview only. */
+(() => {
+'use strict';
+const country=document.getElementById('service-country');
+const selected=()=>country.options[country.selectedIndex];
+const dial=()=>selected()?.dataset.dial || '';
+const code=()=>country.value;
+const getLang=()=>window.omaeaiLanguage?.get() || (new URLSearchParams(location.search).get('lang')||'en');
+const L=(en,es,fr)=>getLang()==='fr'?fr:getLang()==='es'?es:en;
+const numberForm=document.getElementById('new-number-form');
+const existingForm=document.getElementById('existing-number-form');
+const areaRow=document.getElementById('area-code-row');
+const area=document.getElementById('area-code');
+const phone=document.getElementById('company-phone');
+const hint=document.getElementById('existing-number-hint');
+const dialLabel=document.getElementById('service-dial-code');
+const countryContext=document.getElementById('service-country-context');
+const result=document.getElementById('onboard-result');
+const resultTitle=document.getElementById('onboard-result-title');
+const summary=document.getElementById('onboard-result-summary');
+const steps=document.getElementById('onboard-result-steps');
+const providerChoice=document.getElementById('phone-provider');
+const countryName=()=>selected().textContent.split(' (')[0];
+function refresh(){
+ const intl=code()!=='US'&&code()!=='CA';
+ const tollfree=document.querySelector('input[name="number-kind"][value="tollfree"]');
+ const local=document.querySelector('input[name="number-kind"][value="local"]');
+ tollfree.disabled=intl;
+ if(intl&&tollfree.checked){local.checked=true;local.dispatchEvent(new Event('change',{bubbles:true}));}
+ areaRow.hidden=intl;
+ area.disabled=intl||(tollfree.checked);
+ if(intl)area.value='';
+ dialLabel.textContent=dial()?L('International dialing code ','Prefijo internacional ','Indicatif international ')+dial():L('Country requires manual review','El país requiere revisión manual','Le pays nécessite une vérification manuelle');
+ countryContext.textContent=L(
+ 'The selected country determines the dialing code. Number purchases, SIP routing, forwarding and porting depend on local provider eligibility; this is a preview, not an availability check.',
+ 'El país elegido determina el prefijo. Comprar números, conectar SIP, desviar y portar depende de la elegibilidad del proveedor local. Esta demostración no comprueba la disponibilidad.',
+ "Le pays choisi détermine l'indicatif. L'achat de numéros, le routage SIP, le transfert d'appels et le portage dépendent de l'opérateur local. Ceci n'est pas une vérification de disponibilité."
+ );
+ hint.textContent=L('Enter a sample number starting with '+(dial()||'the international code, for example +33')+'. No verification or routing changes will occur.',
+ 'Introduce un número de ejemplo que empiece por '+(dial()||'el prefijo internacional, por ejemplo +33')+'. No se verificará ni se modificarán las llamadas.',
+ "Saisissez un numéro d'exemple commençant par "+(dial()||"l'indicatif international, par exemple +33")+". Aucun appel ni routage ne sera modifié."
+ );
+ phone.placeholder=(code()==='FR'?'+33 1 23 45 67 89':code()==='GB'?'+44 20 1234 5678':code()==='KE'?'+254 20 123 4567':code()==='CA'?'+1 416 555 0100':code()==='US'?'+1 612 555 0100':(dial()||'+33')+' …');
+ phone.value='';
+ result.hidden=true;
+}
+const browserRegion=(navigator.language||'en-US').split('-')[1]?.toUpperCase()||'US';
+if([...country.options].some(o=>o.value===browserRegion))country.value=browserRegion;
+country.addEventListener('change',refresh);
+document.addEventListener('omaeai-language-changed',refresh);
+refresh();
+function display(title,details,items){
+ resultTitle.textContent=title;summary.textContent=details;steps.replaceChildren();
+ items.forEach(item=>{const li=document.createElement('li');li.textContent=item;steps.appendChild(li)});
+ result.hidden=false;
+ result.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
+}
+const chosen=name=>document.getElementById('option-'+name).getAttribute('aria-pressed')==='true';
+numberForm.addEventListener('submit',event=>{
+ event.preventDefault();event.stopImmediatePropagation();
+ if(!chosen('new'))return;
+ const kind=document.querySelector('input[name="number-kind"]:checked')?.value||'local';
+ const digits=area.value.trim();
+ if(!areaRow.hidden&&kind==='local'&&digits&&!/^[0-9]{3}$/.test(digits)){area.setCustomValidity(L('Enter three digits or leave blank.','Introduce tres dígitos o deja el campo vacío.','Saisissez trois chiffres ou laissez le champ vide.'));area.reportValidity();area.setCustomValidity('');return;}
+ display(
+ L('New business number — setup preview','Nuevo número comercial: vista previa','Nouveau numéro professionnel : aperçu'),
+ L('Country: ','País: ','Pays : ')+countryName()+'. '+(kind==='tollfree'?L('Toll-free preference.','Preferencia por un número gratuito.','Préférence pour un numéro gratuit.'):L('Local-number preference.','Preferencia por un número local.','Préférence pour un numéro local.'))+' '+L('No inventory was checked.','No se ha consultado la disponibilidad.','Aucun stock de numéros n’a été consulté.'),
+ [
+ L('Create a secure OmaeAI account and select a subscription.','Crea una cuenta segura de OmaeAI y selecciona un plan.','Créez un compte OmaeAI sécurisé et choisissez un abonnement.'),
+ L('Check number inventory, required local documents, and carrier eligibility in the selected country.','Comprueba números disponibles, documentos locales requeridos y elegibilidad del operador.','Vérifiez les numéros disponibles, les documents locaux requis et l’admissibilité de l’opérateur.'),
+ L('Review any country-specific charges and approve assignment of an eligible number.','Revisa los cargos específicos del país y autoriza la asignación de un número elegible.','Vérifiez les frais propres au pays et approuvez l’attribution d’un numéro admissible.'),
+ L('Train Kate, complete a test call, and explicitly approve activation.','Configura a Kate, realiza una llamada de prueba y autoriza la activación.','Formez Kate, effectuez un appel test et approuvez explicitement l’activation.')
+ ]);
+},true);
+existingForm.addEventListener('submit',event=>{
+ event.preventDefault();event.stopImmediatePropagation();
+ if(!chosen('existing'))return;
+ const raw=phone.value.trim();
+ const cleaned=raw.replace(/[\s().-]/g,'');
+ if(!/^\+[1-9]\d{6,14}$/.test(cleaned) || (dial()&&!cleaned.startsWith(dial()))) {
+ phone.setCustomValidity(L('Enter a sample number with the selected country code (e.g. +33 1 23 45 67 89), 7 to 15 digits in total.','Introduce un número de ejemplo con el prefijo del país elegido (p. ej., +33 1 23 45 67 89), entre 7 y 15 dígitos.','Saisissez un numéro d’exemple avec l’indicatif du pays choisi (p. ex. +33 1 23 45 67 89), entre 7 et 15 chiffres.'));
+ phone.reportValidity();phone.setCustomValidity('');return;
+ }
+ if(!providerChoice.value){providerChoice.reportValidity();return;}
+ const method=document.querySelector('input[name="connection-method"]:checked')?.value||'integrate';
+ const methodLabel=method==='port'?L('number porting','portabilidad del número','portage du numéro'):method==='forward'?L('call forwarding','desvío de llamadas','transfert d’appels'):L('SIP / phone-system integration','integración SIP o central telefónica','intégration SIP ou système téléphonique');
+ const provider=providerChoice.value;
+ display(
+ L('Keep your current number — preview','Conserva tu número actual: vista previa','Conservez votre numéro actuel : aperçu'),
+ L('Example number ending in ','Número de ejemplo que termina en ','Exemple de numéro se terminant par ')+cleaned.slice(-4)+'. '+L('Country: ','País: ','Pays : ')+countryName()+'. '+L('Provider: ','Proveedor: ','Opérateur : ')+provider+'. '+L('Method: ','Método: ','Méthode : ')+methodLabel+'.',
+ method==='port'?[
+ L('Verify number ownership, country-specific porting eligibility, and receiving-provider support.','Verifica la titularidad, la elegibilidad de portabilidad en el país y la compatibilidad del receptor.','Vérifiez la propriété, l’admissibilité locale au portage et la compatibilité de l’opérateur destinataire.'),
+ L('Obtain the legally required authorization and documents through a secure process.','Obtén autorización y documentos necesarios por un proceso seguro.','Obtenez les autorisations et documents nécessaires via une procédure sécurisée.'),
+ L('Confirm fees, estimated timeline, and continuity requirements; keep the current service active until the transfer is scheduled.','Confirma cargos, plazos y continuidad; conserva el servicio actual hasta programar el traslado.','Confirmez les frais, délais et exigences de continuité ; conservez le service actuel jusqu’au portage prévu.'),
+ L('Test Kate and authorize activation after the transfer is confirmed.','Prueba a Kate y autoriza la activación tras confirmar el traslado.','Testez Kate et autorisez l’activation après confirmation du portage.')
+ ]:[
+ L('Verify that you control the existing number and that your provider supports the selected method.','Verifica la titularidad del número y que tu proveedor admite el método elegido.','Vérifiez que vous contrôlez le numéro et que votre opérateur prend en charge la méthode choisie.'),
+ method==='forward'?L('Confirm domestic or international forwarding availability and potential carrier charges.','Comprueba si el desvío local o internacional está disponible y sus posibles cargos.','Vérifiez si le transfert local ou international est disponible et ses éventuels coûts.'):L('Check SIP/PBX compatibility, technical routing, and administrator approvals.','Comprueba compatibilidad SIP/PBX, enrutamiento y permisos del administrador.','Vérifiez la compatibilité SIP/PBX, le routage technique et les autorisations administratives.'),
+ L('Set Kate’s business knowledge, language settings, human fallback, and privacy permissions.','Configura los conocimientos, idiomas, transferencia a personas y permisos de privacidad de Kate.','Configurez les connaissances de Kate, ses langues, ses transferts vers un humain et ses autorisations de confidentialité.'),
+ L('Test the incoming route and explicitly approve service activation.','Prueba la ruta de entrada y autoriza expresamente la activación.','Testez l’acheminement des appels entrants et approuvez explicitement l’activation.')
+ ]);
+},true);
+})();
+</script>
+<script src="./site-languages.js" defer></script>
 
 </body>
 </html>
