@@ -75,6 +75,50 @@
 @media(prefers-reduced-motion:reduce){.onboard-option{transition:none}.onboard-option:hover{transform:none}}
 </style>
 <style>.port-help{margin:13px 0 16px;padding:13px 15px;border:1px solid rgba(114,238,212,.32);border-radius:10px;background:rgba(114,238,212,.06);color:#d9e7ef;font-size:13px;line-height:1.6}.port-help strong{color:#72eed4}.port-help[hidden]{display:none!important}</style>
+<style>
+/* OmaeAI Kate pricing — standalone addition; existing homepage rules preserved */
+.kate-pricing{padding-top:86px;padding-bottom:95px;scroll-margin-top:28px}
+.pricing-eyebrow{font-size:11px;letter-spacing:.2em;font-weight:800;color:var(--mint);text-transform:uppercase;margin:0 0 13px}
+.pricing-head{display:flex;justify-content:space-between;align-items:end;gap:35px;margin-bottom:24px}
+.pricing-head h2{font-size:clamp(34px,4vw,54px);letter-spacing:-.045em;line-height:1.07;margin:0 0 15px;font-weight:750;color:var(--text)}
+.pricing-head h2 em{font-style:normal;color:var(--mint)}
+.pricing-head p.pricing-sub{max-width:590px;color:var(--muted);font-size:16px;line-height:1.68;margin:0}
+.pricing-launch{display:inline-flex;gap:9px;align-items:center;padding:9px 13px;border:1px solid #72eed444;border-radius:40px;background:#72eed40b;color:#bafbec;font-size:12px;font-weight:650;white-space:nowrap;align-self:flex-start}
+.pricing-launch::before{content:"";width:8px;height:8px;background:var(--mint);border-radius:50%}
+.price-switch-wrap{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:16px 20px;border:1px solid var(--line);border-radius:14px;background:#102332;margin:26px 0 21px}
+.price-switch-copy{color:var(--soft);font-size:13px;max-width:510px}
+.price-switch{display:inline-flex;border:1px solid #496476;background:#081725;border-radius:10px;padding:4px;gap:2px;white-space:nowrap}
+.price-switch button{border:0;background:none;color:#b1c0d0;font-weight:700;font-size:13px;padding:11px 15px;border-radius:7px;transition:background .15s,color .15s}
+.price-switch button[aria-pressed="true"]{background:var(--mint);color:#082328}
+.price-switch button:focus-visible{outline:2px solid var(--mint);outline-offset:3px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+.price-card{border:1px solid #385166;background:linear-gradient(157deg,#15283a,#0d1c2b 80%);padding:29px 25px 24px;border-radius:19px;position:relative;display:flex;flex-direction:column;min-width:0}
+.price-card.featured{border-color:#6aebcf;box-shadow:0 0 0 1px #6aebcf4a,0 20px 65px #0004;background:linear-gradient(157deg,#1c3845,#102435 88%)}
+.pricing-feature-tag{display:inline-block;color:#05221e;background:var(--mint);font-size:10px;font-weight:850;letter-spacing:.06em;padding:6px 10px;border-radius:5px;align-self:flex-start;margin-bottom:12px}
+.plan-name{font-size:19px;font-weight:760;margin:0 0 7px;color:#fff;letter-spacing:-.025em}
+.plan-audience{color:var(--muted);font-size:13px;margin:0 0 20px;line-height:1.45;min-height:39px}
+.plan-price-line{display:flex;align-items:baseline;gap:5px;margin:0}
+.plan-price{font-size:48px;font-weight:800;line-height:1.1;letter-spacing:-.065em;color:#fff;font-variant-numeric:tabular-nums}
+.plan-unit{color:#acbfcc;font-size:14px}
+.plan-billed{color:var(--mint);font-size:12px;min-height:34px;margin:7px 0 16px;line-height:1.45}
+.plan-allowance{padding:15px 0 13px;margin:0 0 12px;border-top:1px solid #ffffff25;border-bottom:1px solid #ffffff25;font-size:14px;color:#e7f6f8}
+.plan-allowance strong{color:#fff;font-size:19px}
+.price-card ul{list-style:none;margin:0 0 24px;padding:0;display:grid;gap:11px;flex:1}
+.price-card li{display:flex;align-items:start;gap:9px;font-size:13px;line-height:1.5;color:#d0dfe8}
+.price-card li::before{content:"✓";color:var(--mint);font-weight:850}
+.plan-action{display:block;text-align:center;border-radius:9px;padding:13px;background:#e5f9f3;color:#09282c;font-size:13px;font-weight:800;text-decoration:none;transition:transform .15s,background .15s}
+.plan-action:hover{background:var(--mint);transform:translateY(-2px)}
+.price-card.featured .plan-action{background:var(--mint)}
+.pricing-fineprint{color:#91a8b6;font-size:12px;line-height:1.7;margin:21px 0 0}
+.pricing-setup{margin-top:24px;border:1px solid #49657750;border-radius:13px;padding:18px 20px;background:#142536;display:flex;align-items:center;gap:20px;justify-content:space-between}
+.pricing-setup strong{color:#f5fbff;font-size:14px}
+.pricing-setup p{color:#b2c4d0;font-size:13px;margin:4px 0 0;line-height:1.5}
+.pricing-setup a{color:var(--mint);font-size:13px;font-weight:700;white-space:nowrap}
+@media(max-width:1050px){.pricing-grid{gap:12px}.price-card{padding:25px 19px 21px}.plan-price{font-size:43px}}
+@media(max-width:800px){.kate-pricing{padding-top:64px;padding-bottom:68px}.pricing-head{flex-direction:column;align-items:flex-start;gap:14px}.pricing-grid{grid-template-columns:1fr;max-width:530px;margin:auto;gap:17px}.price-card{padding:28px}.plan-audience{min-height:0}.price-switch-wrap{flex-direction:column;align-items:flex-start}.pricing-setup{align-items:flex-start;flex-direction:column}.pricing-feature-tag{margin-bottom:13px}}
+@media(max-width:380px){.price-switch{width:100%}.price-switch button{font-size:12px;padding:11px;flex:1}.plan-price{font-size:43px}}
+@media(prefers-reduced-motion:reduce){.price-switch button,.plan-action{transition:none}}
+</style>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -84,7 +128,7 @@
 <span aria-hidden="true" class="brand-mark"><span></span><span></span><span></span></span>
 <span>OMAE<span class="brand-light">AI</span></span>
 </a>
-<nav aria-label="Primary" class="nav-links"><a href="#meet-kate">Meet Kate</a><a href="#hear-kate">Hear Kate</a><a href="#capabilities">What Kate can do</a><a href="#hire-kate">Hire Kate</a></nav>
+<nav aria-label="Primary" class="nav-links"><a href="#meet-kate">Meet Kate</a><a href="#hear-kate">Hear Kate</a><a href="#capabilities">What Kate can do</a><a href="#pricing">Pricing</a><a href="#hire-kate">Hire Kate</a></nav>
 <a class="nav-cta" href="#hire-kate">Hire Kate ↗</a>
 </header>
 <main id="main">
@@ -156,6 +200,58 @@
 </div>
 </div>
 </section>
+
+<!-- KATE-PRICING-V1: Transparent preview pricing, no checkout or account creation -->
+<section class="kate-pricing section-wrap" id="pricing" aria-labelledby="pricing-title">
+<div class="pricing-head">
+<div><p class="pricing-eyebrow">INTRODUCTORY PRICING</p><h2 id="pricing-title">A professional welcome.<br><em>At a predictable price.</em></h2>
+<p class="pricing-sub">Choose the Kate that fits your business. Every plan is designed to give your callers a warm, natural first hello—without the old phone menus.</p></div>
+<div class="pricing-launch">Founding customer offer · Launch preview</div>
+</div>
+<div class="price-switch-wrap">
+<span class="price-switch-copy">Preview the planned launch rates. Save with annual billing; no payment is collected on this page.</span>
+<div class="price-switch" role="group" aria-label="Compare monthly and annual billing">
+<button type="button" data-pricing-cycle="monthly" aria-pressed="false">Pay monthly</button>
+<button type="button" data-pricing-cycle="annual" aria-pressed="true">Pay annually · Save up to 8%</button>
+</div>
+</div>
+<div class="pricing-grid">
+<article class="price-card" aria-label="Kate Starter">
+<span class="pricing-feature-tag" style="visibility:hidden" aria-hidden="true">PLAN</span>
+<h3 class="plan-name">Kate Starter</h3>
+<p class="plan-audience">For independent professionals & small businesses</p>
+<p class="plan-price-line"><span class="plan-price" data-monthly="85" data-annual="79">$79</span><span class="plan-unit">/ month</span></p>
+<p class="plan-billed" data-monthly="Billed monthly · $85/month" data-annual="Billed $948 upfront for 12 months">Billed $948 upfront for 12 months</p>
+<p class="plan-allowance"><strong>150</strong> AI call minutes / month</p>
+<ul><li>Kate's natural inbound conversations</li><li>One dedicated number or existing-number setup</li><li>Private Kate Inbox & call summaries</li><li>Business greeting, hours and FAQs</li><li>Basic call routing & callback requests</li></ul>
+<a class="plan-action" href="#hire-kate" aria-label="Preview Kate Starter phone setup">Preview Kate setup ↗</a>
+</article>
+<article class="price-card featured" aria-label="Kate Business">
+<span class="pricing-feature-tag">MOST POPULAR</span>
+<h3 class="plan-name">Kate Business</h3>
+<p class="plan-audience">For growing teams with a busy front desk</p>
+<p class="plan-price-line"><span class="plan-price" data-monthly="195" data-annual="179">$179</span><span class="plan-unit">/ month</span></p>
+<p class="plan-billed" data-monthly="Billed monthly · $195/month" data-annual="Billed $2,148 upfront for 12 months">Billed $2,148 upfront for 12 months</p>
+<p class="plan-allowance"><strong>500</strong> AI call minutes / month</p>
+<ul><li>Everything in Starter</li><li>Calendar integration (planned)</li><li>One supported CRM connection (planned)</li><li>Advanced human handoff rules</li><li>Up to 3 dashboard users (planned)</li></ul>
+<a class="plan-action" href="#hire-kate" aria-label="Preview Kate Business phone setup">Preview Kate setup ↗</a>
+</article>
+<article class="price-card" aria-label="Kate Pro">
+<span class="pricing-feature-tag" style="visibility:hidden" aria-hidden="true">PLAN</span>
+<h3 class="plan-name">Kate Pro</h3>
+<p class="plan-audience">For higher-volume businesses & multi-person teams</p>
+<p class="plan-price-line"><span class="plan-price" data-monthly="379" data-annual="349">$349</span><span class="plan-unit">/ month</span></p>
+<p class="plan-billed" data-monthly="Billed monthly · $379/month" data-annual="Billed $4,188 upfront for 12 months">Billed $4,188 upfront for 12 months</p>
+<p class="plan-allowance"><strong>1,000</strong> AI call minutes / month</p>
+<ul><li>Everything in Business</li><li>Up to 2 CRM connections (planned)</li><li>Detailed call reports & analytics</li><li>Up to 10 dashboard users (planned)</li><li>Priority assistance (planned)</li></ul>
+<a class="plan-action" href="#hire-kate" aria-label="Preview Kate Pro phone setup">Preview Kate setup ↗</a>
+</article></div>
+<div class="pricing-setup"><div><strong>No required activation fee for self-service setup</strong>
+<p>Optional assisted setup: proposed $149 one-time · Complex phone/CRM integrations: custom quote.</p></div>
+<a href="#hire-kate">Explore the number setup options ↗</a></div>
+<p class="pricing-fineprint"><strong>Launch pricing preview—not yet available to purchase.</strong> Rates and features are proposed for OmaeAI’s first three months of paid public availability and remain subject to final launch terms. Prices shown are in USD, per business, before applicable taxes. Annual billing is a 12-month upfront payment, not a month-to-month charge. AI minutes are monthly allowances; additional usage, number eligibility, call capacity, overage rates, and activation terms will be disclosed before purchases are enabled. No sign-up, charge, or number purchase occurs on this preview site.</p>
+</section>
+
 <section aria-labelledby="onboard-title" class="onboard-section section-wrap" id="hire-kate">
 <div class="onboard-heading">
 <div class="onboard-header-copy">
@@ -309,5 +405,23 @@
     showResult(method==='port'?'Transfer your existing number to Kate':'Keep your existing number',`Your example business number ending in ${ending} uses ${provider}. You selected ${conn}.`,process);
   });
 })();
-</script></body>
+</script>
+<script>
+(() => {
+  "use strict";
+  const buttons = document.querySelectorAll('[data-pricing-cycle]');
+  const prices = document.querySelectorAll('.plan-price[data-monthly][data-annual]');
+  const billed = document.querySelectorAll('.plan-billed[data-monthly][data-annual]');
+  buttons.forEach(button => button.addEventListener('click', () => {
+    const cycle = button.getAttribute('data-pricing-cycle');
+    if (cycle !== 'monthly' && cycle !== 'annual') return;
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+    prices.forEach(el => {el.textContent = '
+</html> + el.getAttribute('data-' + cycle);});
+    billed.forEach(el => {el.textContent = el.getAttribute('data-' + cycle);});
+  }));
+})();
+</script>
+
+</body>
 </html>
