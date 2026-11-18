@@ -1,0 +1,211 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OmaeAI Kate Business Profile — draft V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "tenant_id",
+    "business_name",
+    "default_language",
+    "allowed_languages",
+    "business_timezone",
+    "greeting",
+    "services",
+    "approved_faqs",
+    "escalation"
+  ],
+  "properties": {
+    "tenant_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Server-assigned immutable tenant ID. Do not take from untrusted caller text."
+    },
+    "business_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "industry": {
+      "type": "string"
+    },
+    "website_url": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "uri"
+    },
+    "business_timezone": {
+      "type": "string",
+      "description": "IANA timezone (e.g. America/Chicago)"
+    },
+    "default_language": {
+      "type": "string",
+      "description": "BCP-47 tag approved for this voice configuration"
+    },
+    "allowed_languages": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "plan": {
+      "enum": [
+        "starter",
+        "business",
+        "pro"
+      ]
+    },
+    "greeting": {
+      "type": "string",
+      "minLength": 1
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "owner_approved"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "owner_approved": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "hours": {
+      "type": "object",
+      "description": "Owner-approved business hours by day; not inferred from general web research."
+    },
+    "approved_faqs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "question",
+          "answer",
+          "owner_approved"
+        ],
+        "properties": {
+          "question": {
+            "type": "string"
+          },
+          "answer": {
+            "type": "string"
+          },
+          "owner_approved": {
+            "const": true
+          }
+        }
+      }
+    },
+    "billing_policy": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "appointment_policy": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "escalation": {
+      "type": "object",
+      "required": [
+        "fallback_mode"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "fallback_mode": {
+          "enum": [
+            "callback",
+            "transfer",
+            "message"
+          ]
+        },
+        "transfer_destination_id": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "Server-side reference only; never embed raw sensitive access credentials."
+        },
+        "fallback_message": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "integrations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "connection_id",
+          "approved_actions"
+        ],
+        "properties": {
+          "type": {
+            "enum": [
+              "cal_com",
+              "google_calendar",
+              "microsoft_calendar",
+              "crm",
+              "billing",
+              "other"
+            ]
+          },
+          "connection_id": {
+            "type": "string",
+            "description": "Server-side secret reference, not key material."
+          },
+          "approved_actions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "disclosure_policy": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "recording_policy": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "activation_status": {
+      "enum": [
+        "draft",
+        "review",
+        "validated",
+        "active",
+        "disabled"
+      ]
+    }
+  }
+}
